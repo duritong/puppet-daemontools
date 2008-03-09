@@ -13,13 +13,14 @@ class skeleton {
 
 class skeleton::base {
     package{'skeleton':
-        ensure => installed
+        ensure => installed,
     }
 
     service{skeleton:
         ensure => running,
         enable => true,
         #hasstatus => true, #fixme!
+        require => Package[skeleton],
     }
 
 }
