@@ -31,6 +31,9 @@ class skeleton::gentoo inherits skeleton::base {
     }
 
     #conf.d file if needed
+#    Service[skeleton]{
+#       require +> File["/etc/conf.d/skeleton"],
+#    }
 #    file { "/etc/conf.d/skeleton":
 #        owner => "root",
 #        group => "0",
