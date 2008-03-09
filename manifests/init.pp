@@ -1,6 +1,6 @@
 # modules/skeleton/manifests/init.pp - manage skeleton stuff
 # Copyright (C) 2007 admin@immerda.ch
-#
+# GPLv3
 
 # modules_dir { "skeleton": }
 
