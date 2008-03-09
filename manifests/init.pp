@@ -5,5 +5,27 @@
 # modules_dir { "skeleton": }
 
 class skeleton {
+    case $operatingsystem {
+        gentoo: { include skeleton::gentoo }
+        default: { include skeleton::base }
+    }
+}
 
+class skeleton::base {
+    package{'skeleton':
+        ensure => installed
+    }
+
+    service{skeleton:
+        ensure => running,
+        enable => true,
+        #hasstatus => true, #fixme!
+    }
+
+}
+
+class skeleton::gentoo inherits skeleton::base {
+    Package[skeleton]{
+        category => 'some-category',
+    }
 }
