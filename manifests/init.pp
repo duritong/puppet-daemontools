@@ -29,4 +29,17 @@ class skeleton::gentoo inherits skeleton::base {
     Package[skeleton]{
         category => 'some-category',
     }
+
+    #conf.d file if needed
+#    file { "/etc/conf.d/skeleton":
+#        owner => "root",
+#        group => "0",
+#        mode  => 644,
+#        ensure => present,
+#        source => [
+#            "puppet://$server/dist/skeleton/conf.d/${fqdn}/skeleton",
+#            "puppet://$server/dist/skeleton/conf.d/skeleton",
+#            "puppet://$server/skeleton/conf.d/skeleton"
+#        ]
+#    }
 }
