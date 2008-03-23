@@ -31,18 +31,6 @@ class skeleton::gentoo inherits skeleton::base {
     }
 
     #conf.d file if needed
-#    Service[skeleton]{
-#       require +> File["/etc/conf.d/skeleton"],
-#    }
-#    file { "/etc/conf.d/skeleton":
-#        owner => "root",
-#        group => "0",
-#        mode  => 644,
-#        ensure => present,
-#        source => [
-#            "puppet://$server/dist/skeleton/conf.d/${fqdn}/skeleton",
-#            "puppet://$server/dist/skeleton/conf.d/skeleton",
-#            "puppet://$server/skeleton/conf.d/skeleton"
-#        ]
-#    }
+    # needs module gentoo
+    #gentoo::etcconfd { skeleton: require => "Package[skeleton]", notify => "Service[skeleton]"}
 }
