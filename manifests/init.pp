@@ -1,36 +1,32 @@
-# modules/skeleton/manifests/init.pp - manage skeleton stuff
+# modules/daemontools/manifests/init.pp - manage daemontools stuff
 # Copyright (C) 2007 admin@immerda.ch
 # GPLv3
 
-# modules_dir { "skeleton": }
+# modules_dir { "daemontools": }
 
-class skeleton {
+class daemontools {
     case $operatingsystem {
-        gentoo: { include skeleton::gentoo }
-        default: { include skeleton::base }
+        gentoo: { include daemontools::gentoo }
+        default: { include daemontools::base }
     }
 }
 
-class skeleton::base {
-    package{'skeleton':
+class daemontools::base {
+    package{'daemontools':
         ensure => installed,
     }
 
-    service{skeleton:
+    service{svscan:
         ensure => running,
         enable => true,
-        #hasstatus => true, #fixme!
-        require => Package[skeleton],
+        hasstatus => true, 
+        require => Package[daemontools],
     }
 
 }
 
-class skeleton::gentoo inherits skeleton::base {
-    Package[skeleton]{
-        category => 'some-category',
+class daemontools::gentoo inherits daemontools::base {
+    Package[daemontools]{
+        category => 'sys-process',
     }
-
-    #conf.d file if needed
-    # needs module gentoo
-    #gentoo::etcconfd { skeleton: require => "Package[skeleton]", notify => "Service[skeleton]"}
 }
