@@ -10,7 +10,7 @@ define daemontools::service(
         'stopped': { $real_ensure = 'absent' }
         default: { fail("no such modus for daemontools::service") }
     }
-    file{"/service/${name$":
+    file{"/service/${name}":
         ensure => $real_ensure,
     }
 }
