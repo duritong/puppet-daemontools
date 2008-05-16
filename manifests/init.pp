@@ -4,6 +4,8 @@
 
 # modules_dir { "daemontools": }
 
+import "defines.pp"
+
 class daemontools {
     case $operatingsystem {
         gentoo: { include daemontools::gentoo }
