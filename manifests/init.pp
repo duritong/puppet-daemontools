@@ -9,6 +9,10 @@ class daemontools {
         gentoo: { include daemontools::gentoo }
         default: { include daemontools::base }
     }
+
+    if $selinux {
+        include daemontools::selinux
+    }
 }
 
 class daemontools::base {
