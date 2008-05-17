@@ -1,0 +1,22 @@
+puppet module daemontools
+#########################
+
+written by immerda project group
+admin+puppet(at)immerda.ch
+GPLv3
+
+#################################
+
+
+you can use this module to manage daemontools and add or
+remove daemons from the service directory:
+
+start a service:
+
+daemontools::service{"tinydns": }
+or
+daemontools::service{"tinydns": ensure => 'running' }
+
+stop it:
+
+daemontools::service{"tinydns": ensure => 'stopped' }
