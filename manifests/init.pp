@@ -23,7 +23,12 @@ class daemontools::base {
     package{'daemontools':
         ensure => installed,
     }
+}
 
+class daemontools::gentoo inherits daemontools::base {
+    Package[daemontools]{
+        category => 'sys-process',
+    }
     service{svscan:
         ensure => running,
         enable => true,
@@ -31,10 +36,4 @@ class daemontools::base {
         require => Package[daemontools],
     }
 
-}
-
-class daemontools::gentoo inherits daemontools::base {
-    Package[daemontools]{
-        category => 'sys-process',
-    }
 }
