@@ -12,5 +12,6 @@ define daemontools::service(
     }
     file{"/service/${name}":
         ensure => $real_ensure,
+        require => Package['daemontools'],
     }
 }
