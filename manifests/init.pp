@@ -11,6 +11,7 @@ import "defines.pp"
 class daemontools {
     case $operatingsystem {
         gentoo: { include daemontools::gentoo }
+        centos: { include daemontools::centos }
         default: { include daemontools::base }
     }
 
@@ -22,6 +23,14 @@ class daemontools {
 class daemontools::base {
     package{'daemontools':
         ensure => installed,
+    }
+}
+
+class daemontools::centos {
+    # start svscan, it is added to the inittab by the rpm
+    # but not started
+    exec{'svscanboot &':
+        unless => 'ps ax | grep -v grep | grep -q svscan',
     }
 }
 
