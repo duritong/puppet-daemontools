@@ -26,7 +26,7 @@ class daemontools::base {
     }
 }
 
-class daemontools::centos {
+class daemontools::centos inherits daemontools::base {
     # start svscan, it is added to the inittab by the rpm
     # but not started
     exec{'svscanboot &':
