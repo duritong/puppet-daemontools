@@ -1,5 +1,3 @@
-# manifests/define.pp
-
 # ensure can be running or stopped
 define daemontools::service(
     $ensure = 'running',
